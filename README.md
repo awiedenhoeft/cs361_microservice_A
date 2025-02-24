@@ -3,8 +3,8 @@ A. The main program REQUESTs data from the microservice using .txt files. First,
 Example call:
 >user enters "admin" as username<br>
 >call write_username("admin")<br>
->def write_username(username):<br>
-  >with open("user_login.txt", "w") as outfile:<br>
+  >def write_username(username):<br>
+    >with open("user_login.txt", "w") as outfile:<br>
       >outfile.write(username)<br>
       >outfile.close()<br>
   
