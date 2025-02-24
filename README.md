@@ -5,4 +5,4 @@ Example call:
 B. The main program will RECEIVE data from the microservice using .txt files. After the microservice has processed the user information and determined the streak, it writes a message stating the user's current streak to a response.txt file. The main program receives its data from this file.<br>
 Example call:
 
-C. ![alt text]([http://url/to/img.png](https://i.imgur.com/AbXunGQ.png))
+C. ![alt text](https://i.imgur.com/AbXunGQ.png)
