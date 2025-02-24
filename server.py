@@ -3,23 +3,25 @@ import datetime
 import os
 import time
 
-# load existing user data from db file
 def load_user_db():
+    """Loads user_db.txt file with user information."""
     if not os.path.exists("user_db.txt"):
         return {}  # if file does not exist, return empty dictionary
+
     try:
         with open("user_db.txt", "rb") as infile:
             return pickle.load(infile)
     except EOFError:
         return {}  # if file empty, return empty dictionary
 
-# write user data to db file
+
 def save_user_db(user_db):
+    """Write new user information to user_db.txt file."""
     with open("user_db.txt", "wb") as outfile:
         pickle.dump(user_db, outfile)
 
-# read username from login file
 def read_username():
+    """Read username from user_login.txt file received from main program."""
     if not os.path.exists("user_login.txt"):
         return None  # no login attempt detected
 
@@ -35,8 +37,8 @@ def read_username():
     else:
         return None
 
-# calculate streak
 def update_streak(username):
+    """Calculates the user's current login streak."""
     user_db = load_user_db()
     today = datetime.date.today().strftime("%Y-%m-%d")
 
@@ -44,6 +46,7 @@ def update_streak(username):
         last_login = user_db[username]["last_login"]
         streak = user_db[username]["streak"]
 
+        #check how long it's been since last login
         last_login_date = datetime.datetime.strptime(last_login, "%Y-%m-%d").date()
         todays_date = datetime.datetime.strptime(today, "%Y-%m-%d").date()
         days_difference = (todays_date - last_login_date).days
@@ -62,8 +65,8 @@ def update_streak(username):
 
     return streak
 
-# write to response.txt
 def write_response(streak):
+    """Writes streak to response file."""
     with open("response.txt", "w") as infile:
         if streak > 1:
             infile.write(f"Your current login streak is: {streak} days!")

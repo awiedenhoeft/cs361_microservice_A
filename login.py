@@ -9,7 +9,7 @@ def write_username(username):
 
 
 def read_response():
-    """Reads the login streak response from response.txt."""
+    """Reads the login streak response from user_login.txt."""
     while not os.path.exists("response.txt"):  # Wait for server.py to write response
         time.sleep(1)
 
@@ -27,6 +27,6 @@ if __name__ == "__main__":
     print("Username written. Waiting for server response...")
     time.sleep(5)
 
-    # read response from response.txt
+    # read response from user_login.txt
     response = read_response()
     print(response)
