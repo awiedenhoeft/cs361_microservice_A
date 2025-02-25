@@ -1,5 +1,6 @@
 # CS361 Microservice A: Daily Login Tracker
-A. The main program REQUESTs data from the microservice using .txt files. First, the main program writes the username, as entered by the user, to a .txt file. The microservice then reads the .txt file and either finds the user information (which includes the last login date and the current streak) in a user database file or, if the user is new, adds the user information to the user database file. The microservice then updates the user's current streak.<br>
+# HOW TO REQUEST DATA
+At the time of user login, the main program will send the user information to the microservice by writing to a text file. The microservice then reads the text file and uses it to process the user information. If the user is loggin in for the first time, the microservice saves the username, date of last login, and streak (defaulted to 1 day) to a user database file. If the user has logged in previously, the microservices finds the user's information in the user database file and updates the current streak.<br>
 Example call:
 ```
 # user enters "admin" as username
@@ -9,8 +10,9 @@ def write_username(username):
     outfile.write(username)
     outfile.close()
 ```
-  
-B. The main program will RECEIVE data from the microservice using .txt files. After the microservice has processed the user information and determined the streak, it writes a message stating the user's current streak to a response.txt file. The main program receives its data from this file.<br>
+
+# HOW TO RECEIVE DATA
+The main program will RECEIVE data from the microservice using text files. After the microservice has processed the user information and determined the streak, it sends a response back to the main program via a text file containing the current streak.<br>
 Example call:
 ```
 # streak has been calculated
@@ -24,5 +26,6 @@ def write_response(streak):
             infile.write(f"Your current login streak is: {streak} day!")
             infile.close()
 ```
-            
-C. ![alt text](https://i.imgur.com/AbXunGQ.png)
+
+# UML DIAGRAM
+![alt text](https://i.imgur.com/AbXunGQ.png)
