@@ -15,16 +15,14 @@ def write_username(username):
 The main program will RECEIVE data from the microservice using text files. After the microservice has processed the user information and determined the streak, it sends a response back to the main program via a text file containing the current streak.<br>
 Example call:
 ```
-# streak has been calculated
-# call write_response(streak)
-def write_response(streak):
-    with open("response.txt", "w") as infile:
-        if streak > 1:
-            infile.write(f"Your current login streak is: {streak} days!")
-            infile.close()
-        elif streak == 1:
-            infile.write(f"Your current login streak is: {streak} day!")
-            infile.close()
+def read_response():
+  """Reads the login streak response from user_login.txt."""
+  while not os.path.exists("response.txt"):  # Wait for server.py to write response
+      time.sleep(1)
+
+  with open("response.txt", "r") as infile:
+      response = infile.read().strip()
+  return response
 ```
 
 # UML DIAGRAM
